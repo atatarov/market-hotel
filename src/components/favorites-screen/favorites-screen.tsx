@@ -1,4 +1,5 @@
 import { FavoritesCardScreen } from '../favorites-card-screen/favorites-card-screen';
+import {Link} from 'react-router-dom';
 
 export function FavoritesScreen(): JSX.Element {
   return (
@@ -10,9 +11,9 @@ export function FavoritesScreen(): JSX.Element {
             <li className="favorites__locations-items">
               <div className="favorites__locations locations locations--current">
                 <div className="locations__item">
-                  <a className="locations__item-link" href="#">
+                  <Link className="locations__item-link" to="#">
                     <span>Amsterdam</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="favorites__places">
@@ -24,9 +25,9 @@ export function FavoritesScreen(): JSX.Element {
             <li className="favorites__locations-items">
               <div className="favorites__locations locations locations--current">
                 <div className="locations__item">
-                  <a className="locations__item-link" href="#">
+                  <Link className="locations__item-link" to="#">
                     <span>Cologne</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="favorites__places">
