@@ -1,4 +1,4 @@
-const formatDateFromDateType = (date: Date): string => `${date.getDay()} ${date.getMonth()}`;
+const formatDateFromDateType = (date: Date): string => date.toLocaleDateString('default', {day: 'numeric',  month: 'long' });
 
 export const formatDate = (date: number | Date): string => {
   let formattedDate = 'unknown';
@@ -10,3 +10,7 @@ export const formatDate = (date: number | Date): string => {
   }
   return formattedDate;
 };
+
+export const createKeyValue = (value: string, index: number): string => `${index}-${value}`;
+
+export const convertRateToPercentage = (rate: number) => `${(100 / 5) * rate}%`;

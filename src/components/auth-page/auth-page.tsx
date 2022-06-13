@@ -1,4 +1,4 @@
-export function AuthScreen(): JSX.Element {
+export function AuthPage(): JSX.Element {
   return (
     <div className="page page--gray page--login">
       <header className="header">

@@ -2,7 +2,7 @@ export interface IReview {
   avatar: string;
   name: string;
   rate: number;
-  date: string;
+  date: Date;
   text: string;
 }
 
@@ -38,7 +38,12 @@ export interface IOffer {
   maxAdults: number;
   previewImage: string;
   price: number;
-  rating: number;
+  rate: number;
   title: string;
   type: string;
+}
+
+export type IRateFragment = {
+  value: string;
+  id: string;
 }
