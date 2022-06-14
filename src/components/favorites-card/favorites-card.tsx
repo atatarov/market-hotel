@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export function FavoritesCardScreen(): JSX.Element {
+export function FavoritesCard(): JSX.Element {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">

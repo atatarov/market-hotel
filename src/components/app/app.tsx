@@ -1,32 +1,35 @@
-import { MainScreen } from '../main-screen/main-screen';
-import { OfferScreen } from '../offer-screen/offer-screen';
-import { AuthScreen } from '../auth-screen/auth-screen';
-import { FavoritesScreen } from '../favorites-screen/favorites-screen';
+import { MainPage } from '../main-page/main-page';
+import { OfferPage } from '../offer-page/offer-page';
+import { AuthPage } from '../auth-page/auth-page';
+import { FavoritesPage } from '../favorites-page/favorites-page';
 import { PrivateRoute } from '../private-route/private-route';
-import { NotFoundScreen } from '../not-found-screen/not-found-screen';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import { NotFoundPage } from '../not-found-page/not-found-page';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { IOffer, IReview } from '../../interfaces/interfaces';
 
 type AppScreenProps = {
   placeCount: string;
+  offers: IOffer[];
+  reviews: IReview[];
 }
 
 function App(props: AppScreenProps): JSX.Element {
-  const {placeCount} = props;
+  const { placeCount, offers, reviews } = props;
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen placeCount={placeCount}/>}
+          element={<MainPage offers={offers} placeCount={placeCount}/>}
         />
         <Route
           path={AppRoute.Room}
-          element={<OfferScreen/>}
+          element={<OfferPage offers={offers} reviews={reviews}/>}
         />
         <Route
           path={AppRoute.SignIn}
-          element={<AuthScreen/>}
+          element={<AuthPage/>}
         />
         <Route
           path={AppRoute.Favorites}
@@ -34,13 +37,13 @@ function App(props: AppScreenProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.NoAuth}
             >
-              <FavoritesScreen/>
+              <FavoritesPage/>
             </PrivateRoute>
           }
         />
         <Route
           path="*"
-          element={<NotFoundScreen />}
+          element={<NotFoundPage />}
         />
       </Routes>
     </BrowserRouter>
