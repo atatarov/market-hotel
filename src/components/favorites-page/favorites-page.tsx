@@ -1,5 +1,5 @@
 import { IOffer } from '../../interfaces/interfaces';
-import { FavoritesList } from '../favorites-list/favorites.list';
+import { FavoritesList } from '../favorites-list/favorites-list';
 import { filter } from '../../utils';
 
 type FavoritesPageProps = {

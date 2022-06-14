@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { IOffer } from '../../interfaces/interfaces';
 import { convertRateToPercentage } from '../../utils';
+import { BookmarkButton } from '../bookmark-button/bookmark-button';
 
 type PlaceCardProps = {
   offer: IOffer;
@@ -27,12 +28,7 @@ export function PlaceCard(props: PlaceCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <BookmarkButton isActive={offer.isFavorite}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
