@@ -43,7 +43,19 @@ export interface IOffer {
   type: string;
 }
 
-export type IRateFragment = {
+export interface IRateFragment {
   value: string;
   id: string;
+}
+
+export interface ISize {
+  width: string;
+  height: string;
+}
+
+export interface BookmarkStyle {
+  buttonClassName: string;
+  image: string;
+  size: ISize;
+  hiddenText: string;
 }

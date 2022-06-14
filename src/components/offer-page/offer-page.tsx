@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { IOffer, IReview } from '../../interfaces/interfaces';
 import { convertRateToPercentage, createKeyValue } from '../../utils';
+import { BookmarkButton } from '../bookmark-button/bookmark-button';
 import { Reviews } from '../reviews/reviews';
 
 type OfferPageProps = {
@@ -49,12 +50,7 @@ export function OfferPage(props: OfferPageProps): JSX.Element {
               <h1 className="property__name">
                 {offer.title}
               </h1>
-              <button className="property__bookmark-button button" type="button">
-                <svg className="property__bookmark-icon" width="31" height="33">
-                  <use xlinkHref="#icon-bookmark"></use>
-                </svg>
-                <span className="visually-hidden">To bookmarks</span>
-              </button>
+              <BookmarkButton isActive={offer.isFavorite} isLarge/>
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">

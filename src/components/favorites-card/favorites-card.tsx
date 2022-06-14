@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { IOffer } from '../../interfaces/interfaces';
+import { convertRateToPercentage } from '../../utils';
+import { BookmarkButton } from '../bookmark-button/bookmark-button';
 
 type FavoritesCardProps = {
   offer: IOffer;
@@ -7,6 +9,8 @@ type FavoritesCardProps = {
 
 export function FavoritesCard(props: FavoritesCardProps): JSX.Element {
   const {offer} = props;
+
+  const rateInPercentage = convertRateToPercentage(offer.rate);
 
   return (
     <article className="favorites__card place-card">
@@ -21,16 +25,11 @@ export function FavoritesCard(props: FavoritesCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">In bookmarks</span>
-          </button>
+          <BookmarkButton isActive={offer.isFavorite}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '100%'}}></span>
+            <span style={{width: rateInPercentage}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
