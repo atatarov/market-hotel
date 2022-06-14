@@ -1,4 +1,12 @@
 import { IRateFragment } from './interfaces/interfaces';
+import { ApartamentDict } from './types/types';
+
+export const apartamentDict: ApartamentDict = {
+  apartment: 'Apartment',
+  room: 'Private Room',
+  house: 'House',
+  hotel: 'Hotel',
+};
 
 export enum AppRoute {
     Main = '/',

@@ -1,41 +1,34 @@
-import { FavoritesCard } from '../favorites-card/favorites-card';
-import {Link} from 'react-router-dom';
+import { IOffer } from '../../interfaces/interfaces';
+import { FavoritesList } from '../favorites-list/favorites.list';
+import { filter } from '../../utils';
 
-export function FavoritesPage(): JSX.Element {
+type FavoritesPageProps = {
+  offers: IOffer[];
+}
+
+export function FavoritesPage(props: FavoritesPageProps): JSX.Element {
+  const { offers } = props;
+
+  const favoritesOffers = offers.filter((offer)=>offer.isFavorite);
+
+  const filteredOffers = filter(favoritesOffers);
+
+  const favoritesIsEmpty = (
+    <section className="favorites favorites--empty">
+      <h1 className="visually-hidden">Favorites (empty)</h1>
+      <div className="favorites__status-wrapper">
+        <b className="favorites__status">Nothing yet saved.</b>
+        <p className="favorites__status-description">Save properties to narrow down search or plan your future trips.</p>
+      </div>
+    </section>
+  );
+
+  const favorites = favoritesOffers.length > 0 ? <FavoritesList favoritesOffers={filteredOffers}/> : favoritesIsEmpty;
+
   return (
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
-        <section className="favorites">
-          <h1 className="favorites__title">Saved listing</h1>
-          <ul className="favorites__list">
-            <li className="favorites__locations-items">
-              <div className="favorites__locations locations locations--current">
-                <div className="locations__item">
-                  <Link className="locations__item-link" to="#">
-                    <span>Amsterdam</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="favorites__places">
-                <FavoritesCard />
-                <FavoritesCard />
-              </div>
-            </li>
-
-            <li className="favorites__locations-items">
-              <div className="favorites__locations locations locations--current">
-                <div className="locations__item">
-                  <Link className="locations__item-link" to="#">
-                    <span>Cologne</span>
-                  </Link>
-                </div>
-              </div>
-              <div className="favorites__places">
-                <FavoritesCard />
-              </div>
-            </li>
-          </ul>
-        </section>
+        {favorites}
       </div>
     </main>
   );
