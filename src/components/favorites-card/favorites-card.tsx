@@ -1,6 +1,13 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { IOffer } from '../../interfaces/interfaces';
 
-export function FavoritesCard(): JSX.Element {
+type FavoritesCardProps = {
+  offer: IOffer;
+}
+
+export function FavoritesCard(props: FavoritesCardProps): JSX.Element {
+  const {offer} = props;
+
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
@@ -11,7 +18,7 @@ export function FavoritesCard(): JSX.Element {
       <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;80</b>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
