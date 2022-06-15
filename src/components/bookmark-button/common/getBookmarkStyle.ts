@@ -1,6 +1,6 @@
-import { BookmarkStyle, ISize } from '../../../interfaces/interfaces';
+import { IBookmarkStyle, ISize } from '../../../interfaces/interfaces';
 
-export const getBookmarkStyles = (isActive: boolean, isLarge?: boolean): BookmarkStyle => {
+export const getBookmarkStyle = (isActive: boolean, isLarge?: boolean): IBookmarkStyle => {
 
   const bookmarkProps = isLarge ? {
     hiddenText: 'In bookmarks',
@@ -20,5 +20,5 @@ export const getBookmarkStyles = (isActive: boolean, isLarge?: boolean): Bookmar
   return {
     buttonClassName,
     ...bookmarkProps,
-  } as BookmarkStyle;
+  } as IBookmarkStyle;
 };

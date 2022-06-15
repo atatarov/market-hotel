@@ -1,6 +1,7 @@
 import { IOffer } from '../../interfaces/interfaces';
 import { Link } from 'react-router-dom';
-import { FavoritesCard } from '../favorites-card/favorites-card';
+import { PlaceCard } from '../place-card/place-card';
+import { CardType } from '../../const';
 
 type LocationItemProps = {
     offers: IOffer[],
@@ -10,9 +11,9 @@ type LocationItemProps = {
 export function LocationItem(props: LocationItemProps): JSX.Element {
   const { cityName, offers } = props;
 
-  const favoritesCards = offers.map((offer) => <FavoritesCard key={offer.id} offer={offer} />);
-
+  const favoritesCards = offers.map((offer) => <PlaceCard key={offer.id} offer={offer} cardType={CardType.Favorites} />);
   return (
+
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
