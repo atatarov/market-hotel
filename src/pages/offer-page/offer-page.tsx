@@ -1,9 +1,10 @@
-import { CardType } from '../../const';
+import { CardType, MapType } from '../../const';
 import { IOffer, IReview } from '../../interfaces/interfaces';
 import { convertRateToPercentage, createKeyValue } from '../../utils';
 import { BookmarkButton } from '../../components/bookmark-button/bookmark-button';
 import { PlaceCard } from '../../components/place-card/place-card';
 import { ReviewList } from '../../components/reviews/review-list/review-list';
+import { MapComponent } from '../../components/map-component/map-component';
 
 interface IOfferPageProps {
   offers: IOffer[];
@@ -106,7 +107,7 @@ export function OfferPage({ offers, reviews }: IOfferPageProps): JSX.Element {
             <ReviewList reviews={reviews} />
           </div>
         </div>
-        <section className="property__map map"></section>
+        <MapComponent type={MapType.Property} />
       </section>
       <div className="container">
         <section className="near-places places">

@@ -14,4 +14,8 @@ export type City =
   | 'Hamburg'
   | 'Dusseldorf';
 
+export type CitiesDict = {
+  [key in City]: string;
+}
+
 export type FavoritesOffers = { [key in City]: IOffer[] };
