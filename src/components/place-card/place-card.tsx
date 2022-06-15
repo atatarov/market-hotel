@@ -1,34 +1,46 @@
 import { Link } from 'react-router-dom';
+import { CardType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
-import { convertRateToPercentage } from '../../utils';
 import { BookmarkButton } from '../bookmark-button/bookmark-button';
+import { getPlaceCardStyle } from './common/getPlaceCardStyle';
 
 type PlaceCardProps = {
   offer: IOffer;
+  cardType: CardType;
 }
 
-export function PlaceCard(props: PlaceCardProps): JSX.Element {
-  const { offer } = props;
-
-  const premium = offer.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : '';
-
-  const rateInPercentage = convertRateToPercentage(offer.rate);
+export function PlaceCard({ offer, cardType } : PlaceCardProps): JSX.Element {
+  const {
+    cardTypeProps,
+    premiumElement,
+    rateInPercentage,
+    previewImage,
+    price,
+    bookmarkIsActive,
+    title,
+    offerType,
+  } = getPlaceCardStyle(offer, cardType);
 
   return (
-    <article className="cities__place-card place-card">
-      {premium}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className={`${cardTypeProps.cardTypeClass} place-card`}>
+      {premiumElement ? premiumElement : ''}
+      <div className={`${cardTypeProps.wrapperTypeClass} place-card__image-wrapper`}>
         <Link to="#">
-          <img className="place-card__image" src={offer.images[0]} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image"
+            src={previewImage}
+            width={cardTypeProps.imageSize.width}
+            height={cardTypeProps.imageSize.height}
+            alt="Place image"
+          />
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{offer.price}</b>
+            <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <BookmarkButton isActive={offer.isFavorite}/>
+          <BookmarkButton isActive={bookmarkIsActive}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -37,9 +49,9 @@ export function PlaceCard(props: PlaceCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">{offer.title}</Link>
+          <Link to="#">{title}</Link>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{offerType}</p>
       </div>
     </article>
   );

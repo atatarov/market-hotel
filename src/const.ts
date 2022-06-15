@@ -43,3 +43,9 @@ export const rateFragments: IRateFragment[] = [
     value: '1',
   },
 ];
+
+export enum CardType {
+  Cities = 'Cities',
+  Near = 'Near',
+  Favorites = 'Favorites',
+}

@@ -1,3 +1,4 @@
+import { CardType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
 import { PlaceCard } from '../place-card/place-card';
 
@@ -9,7 +10,7 @@ type PlacesBoardProps = {
 
 export function PlacesBoard(props: PlacesBoardProps): JSX.Element {
   const { offers, placeCount, city } = props;
-  const placeCards = offers.map((offer)=><PlaceCard key={offer.id} offer={offer}/>);
+  const placeCards = offers.map((offer)=><PlaceCard key={offer.id} offer={offer} cardType={CardType.Cities}/>);
 
   return (
     <section className="cities__places places">
