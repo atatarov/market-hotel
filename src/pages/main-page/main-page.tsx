@@ -1,32 +1,43 @@
 import { Link } from 'react-router-dom';
 import { IOffer } from '../../interfaces/interfaces';
-import { PlacesBoard } from '../places-board/places-board';
+import { PlacesBoard } from '../../components/places-board/places-board';
 
-type MainPageProps = {
-    placeCount: string;
-    offers: IOffer[];
+interface IMainPageProps {
+  placeCount: string;
+  offers: IOffer[];
 }
 
-export function MainPage(props: MainPageProps): JSX.Element {
-  const { placeCount, offers } = props;
-
+export function MainPage({ placeCount, offers }: IMainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Link className="header__logo-link header__logo-link--active" to="#">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+              <Link
+                className="header__logo-link header__logo-link--active"
+                to="#"
+              >
+                <img
+                  className="header__logo"
+                  src="img/logo.svg"
+                  alt="6 cities logo"
+                  width="81"
+                  height="41"
+                />
               </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <Link className="header__nav-link header__nav-link--profile" to="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                  <Link
+                    className="header__nav-link header__nav-link--profile"
+                    to="#"
+                  >
+                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+                    <span className="header__user-name user__name">
+                      Oliver.conner@gmail.com
+                    </span>
                   </Link>
                 </li>
                 <li className="header__nav-item">
@@ -61,7 +72,10 @@ export function MainPage(props: MainPageProps): JSX.Element {
                 </Link>
               </li>
               <li className="locations__item">
-                <Link className="locations__item-link tabs__item tabs__item--active" to="#">
+                <Link
+                  className="locations__item-link tabs__item tabs__item--active"
+                  to="#"
+                >
                   <span>Amsterdam</span>
                 </Link>
               </li>
@@ -80,7 +94,11 @@ export function MainPage(props: MainPageProps): JSX.Element {
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <PlacesBoard offers={offers} placeCount={placeCount} city={'Amsterdam'}/>
+            <PlacesBoard
+              offers={offers}
+              placeCount={placeCount}
+              city={'Amsterdam'}
+            />
             <div className="cities__right-section">
               <section className="cities__map map"></section>
             </div>
@@ -90,4 +108,3 @@ export function MainPage(props: MainPageProps): JSX.Element {
     </div>
   );
 }
-

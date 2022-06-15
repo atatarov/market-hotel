@@ -52,26 +52,3 @@ export interface ISize {
   width: string;
   height: string;
 }
-
-export interface IBookmarkStyle {
-  buttonClassName: string;
-  image: string;
-  size: ISize;
-  hiddenText: string;
-}
-export interface ICardTypeProps {
-  cardTypeClass: string;
-  wrapperTypeClass: string;
-  imageSize: ISize;
-}
-
-export interface IPlaceCardStyle {
-  cardTypeProps: ICardTypeProps;
-  premiumElement: JSX.Element | null;
-  rateInPercentage: string;
-  previewImage: string;
-  price: number;
-  bookmarkIsActive: boolean;
-  title: string;
-  offerType: string;
-}

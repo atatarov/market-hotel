@@ -6,6 +6,12 @@ export type ApartamentDict = {
   [key in ApartamentType]: string;
 };
 
-export type City = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' |  'Hamburg' | 'Dusseldorf';
+export type City =
+  | 'Paris'
+  | 'Cologne'
+  | 'Brussels'
+  | 'Amsterdam'
+  | 'Hamburg'
+  | 'Dusseldorf';
 
-export type FavoritesOffers = {[key in City]: IOffer[]}
+export type FavoritesOffers = { [key in City]: IOffer[] };

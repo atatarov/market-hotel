@@ -10,4 +10,4 @@ export const review: IReview = {
     s green and from 18th century.`,
 };
 
-export const reviews: IReview[] = [ review ];
+export const reviews: IReview[] = [review];
