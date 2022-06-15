@@ -1,23 +1,34 @@
 import { CardType } from '../../../const';
-import { IOffer, IPlaceCardStyle } from '../../../interfaces/interfaces';
+import { IOffer } from '../../../interfaces/interfaces';
 import { convertRateToPercentage } from '../../../utils';
+import { IPlaceCardStyle } from '../interfaces/IPlaceCardStyle';
 import { getPlaceCardProps } from './getPlaceCardProps';
 
-export const getPlaceCardStyle = (offer: IOffer, cardType: CardType): IPlaceCardStyle => {
+export const getPlaceCardStyle = (
+  offer: IOffer,
+  cardType: CardType,
+): IPlaceCardStyle => {
+  const { previewImage, price, isFavorite, title, type, isPremium, rate } =
+    offer;
+
   const cardTypeProps = getPlaceCardProps(cardType);
 
-  const premiumElement = offer.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : null;
+  const premiumElement = isPremium ? (
+    <div className="place-card__mark">
+      <span>Premium</span>
+    </div>
+  ) : null;
 
-  const rateInPercentage = convertRateToPercentage(offer.rate);
+  const rateInPercentage = convertRateToPercentage(rate);
 
   return {
     cardTypeProps,
     premiumElement,
     rateInPercentage,
-    previewImage: offer.previewImage,
-    price: offer.price,
-    bookmarkIsActive: offer.isFavorite,
-    title: offer.title,
-    offerType: offer.type,
+    previewImage,
+    price,
+    isFavorite,
+    title,
+    type,
   } as IPlaceCardStyle;
 };

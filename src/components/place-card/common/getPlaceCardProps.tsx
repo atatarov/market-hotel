@@ -1,5 +1,5 @@
 import { CardType } from '../../../const';
-import { ICardTypeProps } from '../../../interfaces/interfaces';
+import { ICardTypeProps } from '../interfaces/ICardTypeProps';
 
 export const getPlaceCardProps = (cardType: CardType): ICardTypeProps => {
   const citiesProps: ICardTypeProps = {
@@ -8,7 +8,7 @@ export const getPlaceCardProps = (cardType: CardType): ICardTypeProps => {
     imageSize: { width: '260', height: '200' },
   };
 
-  switch(cardType) {
+  switch (cardType) {
     case CardType.Near:
       return {
         cardTypeClass: 'near-places__card',
@@ -19,10 +19,8 @@ export const getPlaceCardProps = (cardType: CardType): ICardTypeProps => {
       return {
         cardTypeClass: 'favorites__card',
         wrapperTypeClass: 'favorites__image-wrapper',
-        imageSize: {width: '150', height: '110'},
+        imageSize: { width: '150', height: '110' },
       };
-    case CardType.Cities:
-      return citiesProps;
     default:
       return citiesProps;
   }

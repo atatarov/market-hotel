@@ -1,12 +1,14 @@
 import { getBookmarkStyle } from './common/getBookmarkStyle';
+import { IBookmarkButtonProps } from './interfaces/IBookmarkButtonProps';
 
-type BookmarkButtonProps = {
-    isActive: boolean;
-    isLarge?: boolean;
-}
-
-export function BookmarkButton({isActive, isLarge}: BookmarkButtonProps): JSX.Element {
-  const { buttonClassName, image, size, hiddenText } = getBookmarkStyle(isActive, isLarge);
+export function BookmarkButton({
+  isActive,
+  isLarge,
+}: IBookmarkButtonProps): JSX.Element {
+  const { buttonClassName, image, size, hiddenText } = getBookmarkStyle(
+    isActive,
+    isLarge,
+  );
 
   return (
     <button className={buttonClassName} type="button">
