@@ -19,7 +19,7 @@ export interface ICity {
 
 export interface IHost {
   avatarUrl: string;
-  id: number;
+  id: string;
   isPro: boolean;
   name: string;
 }
@@ -30,7 +30,7 @@ export interface IOffer {
   description: string;
   goods: string[];
   host: IHost;
-  id: number;
+  id: string;
   images: string[];
   isFavorite: boolean;
   isPremium: boolean;

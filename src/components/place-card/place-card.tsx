@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import { BookmarkButton } from '../bookmark-button/bookmark-button';
 import { getPlaceCardStyle } from './common/getPlaceCardStyle';
 import { IPlaceCardProps } from './interfaces/IPlaceCardProps';
 
 export function PlaceCard({ offer, cardType }: IPlaceCardProps): JSX.Element {
   const {
+    id,
     cardTypeProps,
     premiumElement,
     rateInPercentage,
@@ -21,13 +23,13 @@ export function PlaceCard({ offer, cardType }: IPlaceCardProps): JSX.Element {
       <div
         className={`${cardTypeProps.wrapperTypeClass} place-card__image-wrapper`}
       >
-        <Link to="#">
+        <Link to="/">
           <img
             className="place-card__image"
             src={previewImage}
             width={cardTypeProps.imageSize.width}
             height={cardTypeProps.imageSize.height}
-            alt="Place image"
+            alt="Place"
           />
         </Link>
       </div>
@@ -46,7 +48,7 @@ export function PlaceCard({ offer, cardType }: IPlaceCardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">{title}</Link>
+          <Link to={`${AppRoute.RoomId}${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

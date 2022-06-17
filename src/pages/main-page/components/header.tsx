@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppRoute } from '../../../const';
 
 export function Header(): JSX.Element {
   return (
@@ -8,7 +9,7 @@ export function Header(): JSX.Element {
           <div className="header__left">
             <Link
               className="header__logo-link header__logo-link--active"
-              to="#"
+              to="/"
             >
               <img
                 className="header__logo"
@@ -24,7 +25,7 @@ export function Header(): JSX.Element {
               <li className="header__nav-item user">
                 <Link
                   className="header__nav-link header__nav-link--profile"
-                  to="#"
+                  to="/"
                 >
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   <span className="header__user-name user__name">
@@ -33,7 +34,7 @@ export function Header(): JSX.Element {
                 </Link>
               </li>
               <li className="header__nav-item">
-                <Link className="header__nav-link" to="#">
+                <Link className="header__nav-link" to={AppRoute.SignIn}>
                   <span className="header__signout">Sign out</span>
                 </Link>
               </li>

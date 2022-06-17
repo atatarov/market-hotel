@@ -24,11 +24,11 @@ const one: IOffer = {
   ],
   host: {
     avatarUrl: 'img/avatar-angelina.jpg',
-    id: 3,
+    id: '3',
     isPro: true,
     name: 'Angelina',
   },
-  id: 1,
+  id: '1',
   images: [
     'img/room.jpg',
     'img/apartment-01.jpg',
@@ -67,11 +67,11 @@ const two: IOffer = {
   goods: ['Heating', 'Kitchen', 'Sofa'],
   host: {
     avatarUrl: 'img/avatar-angelina.jpg',
-    id: 6,
+    id: '6',
     isPro: false,
     name: 'Veronika',
   },
-  id: 2,
+  id: '2',
   images: [
     'img/room.jpg',
     'img/apartment-01.jpg',
@@ -117,11 +117,11 @@ const three: IOffer = {
   ],
   host: {
     avatarUrl: 'img/avatar-angelina.jpg',
-    id: 3,
+    id: '3',
     isPro: true,
     name: 'Angelina',
   },
-  id: 3,
+  id: '3',
   images: [
     'img/room.jpg',
     'img/apartment-01.jpg',
@@ -167,11 +167,11 @@ const four: IOffer = {
   ],
   host: {
     avatarUrl: 'img/avatar-angelina.jpg',
-    id: 9,
+    id: '9',
     isPro: false,
     name: 'Elena',
   },
-  id: 4,
+  id: '4',
   images: [
     'img/room.jpg',
     'img/apartment-01.jpg',

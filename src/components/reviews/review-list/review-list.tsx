@@ -1,6 +1,6 @@
 import { IReview } from '../../../interfaces/interfaces';
 import { createKeyValue } from '../../../utils';
-import { RateForm } from '../rate-form/rate-form';
+import { ReviewForm } from '../review-form/review-form';
 import { ReviewItem } from '../review-item/review-item';
 
 interface IReviewListProps {
@@ -20,7 +20,7 @@ export function ReviewList({ reviews }: IReviewListProps): JSX.Element {
         <span className="reviews__amount">{reviews.length}</span>
       </h2>
       <ul className="reviews__list">{reviewItems}</ul>
-      <RateForm />
+      <ReviewForm />
     </section>
   );
 }
