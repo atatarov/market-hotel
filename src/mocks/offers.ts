@@ -1,8 +1,8 @@
 import { IOffer } from '../interfaces/interfaces';
 import { apartamentDict } from '../const';
 
-export const offer: IOffer = {
-  bedrooms: 3,
+const one: IOffer = {
+  bedrooms: 5,
   city: {
     location: {
       latitude: 52.370216,
@@ -20,6 +20,7 @@ export const offer: IOffer = {
     'Washing machine',
     'Coffee machine',
     'Dishwasher',
+    'Table',
   ],
   host: {
     avatarUrl: 'img/avatar-angelina.jpg',
@@ -51,7 +52,50 @@ export const offer: IOffer = {
   type: apartamentDict['apartment'],
 };
 
-export const another: IOffer = {
+const two: IOffer = {
+  bedrooms: 3,
+  city: {
+    location: {
+      latitude: 52.370216,
+      longitude: 4.895168,
+      zoom: 10,
+    },
+    name: 'Paris',
+  },
+  description:
+    'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+  goods: ['Heating', 'Kitchen', 'Sofa'],
+  host: {
+    avatarUrl: 'img/avatar-angelina.jpg',
+    id: 6,
+    isPro: false,
+    name: 'Veronika',
+  },
+  id: 2,
+  images: [
+    'img/room.jpg',
+    'img/apartment-01.jpg',
+    'img/apartment-02.jpg',
+    'img/apartment-03.jpg',
+    'img/studio-01.jpg',
+    'img/apartment-01.jpg',
+  ],
+  isFavorite: true,
+  isPremium: false,
+  location: {
+    latitude: 59.35514938496378,
+    longitude: 6.673877537499948,
+    zoom: 8,
+  },
+  maxAdults: 3,
+  previewImage: 'img/room.jpg',
+  price: 1500,
+  rate: 3.9,
+  title: 'Beautiful & luxurious studio at great location',
+  type: apartamentDict['hotel'],
+};
+
+const three: IOffer = {
   bedrooms: 3,
   city: {
     location: {
@@ -77,7 +121,57 @@ export const another: IOffer = {
     isPro: true,
     name: 'Angelina',
   },
-  id: 1,
+  id: 3,
+  images: [
+    'img/room.jpg',
+    'img/apartment-01.jpg',
+    'img/apartment-02.jpg',
+    'img/apartment-03.jpg',
+    'img/studio-01.jpg',
+    'img/apartment-01.jpg',
+  ],
+  isFavorite: true,
+  isPremium: false,
+  location: {
+    latitude: 38.35514938496378,
+    longitude: 1.673877537499948,
+    zoom: 8,
+  },
+  maxAdults: 8,
+  previewImage: 'img/apartment-03.jpg',
+  price: 350,
+  rate: 2.7,
+  title: 'Beautiful & luxurious studio at great location',
+  type: apartamentDict['apartment'],
+};
+
+const four: IOffer = {
+  bedrooms: 12,
+  city: {
+    location: {
+      latitude: 57.370216,
+      longitude: 8.895168,
+      zoom: 10,
+    },
+    name: 'Hamburg',
+  },
+  description:
+    'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+  goods: [
+    'Heating',
+    'Kitchen',
+    'Cable TV',
+    'Washing machine',
+    'Coffee machine',
+    'Dishwasher',
+  ],
+  host: {
+    avatarUrl: 'img/avatar-angelina.jpg',
+    id: 9,
+    isPro: false,
+    name: 'Elena',
+  },
+  id: 4,
   images: [
     'img/room.jpg',
     'img/apartment-01.jpg',
@@ -93,12 +187,12 @@ export const another: IOffer = {
     longitude: 4.673877537499948,
     zoom: 8,
   },
-  maxAdults: 4,
-  previewImage: 'img/apartment-01.jpg',
-  price: 1220,
-  rate: 4.8,
+  maxAdults: 2,
+  previewImage: 'img/apartment-03.jpg',
+  price: 990,
+  rate: 4.3,
   title: 'Beautiful & luxurious studio at great location',
-  type: apartamentDict['apartment'],
+  type: apartamentDict['house'],
 };
 
-export const offers: IOffer[] = [offer, another, offer, another, offer];
+export const offers: IOffer[] = [one, two, three, four];
