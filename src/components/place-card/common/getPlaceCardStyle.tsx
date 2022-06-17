@@ -8,7 +8,7 @@ export const getPlaceCardStyle = (
   offer: IOffer,
   cardType: CardType,
 ): IPlaceCardStyle => {
-  const { previewImage, price, isFavorite, title, type, isPremium, rate } =
+  const { id, previewImage, price, isFavorite, title, type, isPremium, rate } =
     offer;
 
   const cardTypeProps = getPlaceCardProps(cardType);
@@ -22,6 +22,7 @@ export const getPlaceCardStyle = (
   const rateInPercentage = convertRateToPercentage(rate);
 
   return {
+    id,
     cardTypeProps,
     premiumElement,
     rateInPercentage,

@@ -5,6 +5,8 @@ import { BookmarkButton } from '../../components/bookmark-button/bookmark-button
 import { PlaceCard } from '../../components/place-card/place-card';
 import { ReviewList } from '../../components/reviews/review-list/review-list';
 import { MapComponent } from '../../components/map-component/map-component';
+import { useParams } from 'react-router-dom';
+import { NotFoundPage } from '../not-found-page/not-found-page';
 
 interface IOfferPageProps {
   offers: IOffer[];
@@ -12,13 +14,18 @@ interface IOfferPageProps {
 }
 
 export function OfferPage({ offers, reviews }: IOfferPageProps): JSX.Element {
-  const [offer] = offers;
+  const { id } = useParams();
+  const offer = offers.find((item) => item.id === id);
+
+  if (offer === undefined) {
+    return <NotFoundPage />;
+  }
 
   const images = offer.images.map((image, index) => {
     const keyValue = createKeyValue(image, index);
     return (
       <div key={keyValue} className="property__image-wrapper">
-        <img className="property__image" src={image} alt="Photo studio" />
+        <img className="property__image" src={image} alt="studio" />
       </div>
     );
   });
@@ -92,7 +99,7 @@ export function OfferPage({ offers, reviews }: IOfferPageProps): JSX.Element {
                     src={offer.host.avatarUrl}
                     width="74"
                     height="74"
-                    alt="Host avatar"
+                    alt="Host"
                   />
                 </div>
                 <span className="property__user-name">{offer.host.name}</span>
