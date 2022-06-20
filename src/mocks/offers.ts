@@ -40,8 +40,8 @@ const one: IOffer = {
   isFavorite: false,
   isPremium: false,
   location: {
-    latitude: 52.35514938496378,
-    longitude: 4.673877537499948,
+    latitude: 52.3909553943508,
+    longitude: 4.85309666406198,
     zoom: 8,
   },
   maxAdults: 4,
@@ -60,7 +60,7 @@ const two: IOffer = {
       longitude: 4.895168,
       zoom: 10,
     },
-    name: 'Paris',
+    name: 'Amsterdam',
   },
   description:
     'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -84,7 +84,7 @@ const two: IOffer = {
   isPremium: false,
   location: {
     latitude: 59.35514938496378,
-    longitude: 6.673877537499948,
+    longitude: 4.85309666406198,
     zoom: 8,
   },
   maxAdults: 3,
@@ -103,7 +103,7 @@ const three: IOffer = {
       longitude: 4.895168,
       zoom: 10,
     },
-    name: 'Paris',
+    name: 'Amsterdam',
   },
   description:
     'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -133,8 +133,8 @@ const three: IOffer = {
   isFavorite: true,
   isPremium: false,
   location: {
-    latitude: 38.35514938496378,
-    longitude: 1.673877537499948,
+    latitude: 52.3909553943508,
+    longitude: 4.929309666406198,
     zoom: 8,
   },
   maxAdults: 8,
@@ -149,11 +149,11 @@ const four: IOffer = {
   bedrooms: 12,
   city: {
     location: {
-      latitude: 57.370216,
-      longitude: 8.895168,
+      latitude: 52.370216,
+      longitude: 4.895168,
       zoom: 10,
     },
-    name: 'Hamburg',
+    name: 'Amsterdam',
   },
   description:
     'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -183,8 +183,8 @@ const four: IOffer = {
   isFavorite: true,
   isPremium: false,
   location: {
-    latitude: 52.35514938496378,
-    longitude: 4.673877537499948,
+    latitude: 52.3809553943508,
+    longitude: 4.939309666406198,
     zoom: 8,
   },
   maxAdults: 2,

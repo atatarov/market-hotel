@@ -1,5 +1,9 @@
 import { IRateFragment } from './interfaces/interfaces';
-import { ApartamentDict, CitiesDict } from './types/types';
+import {
+  ApartamentDict,
+  CitiesDict,
+  CitiesLocations
+} from './types/types';
 
 export const apartamentDict: ApartamentDict = {
   apartment: 'Apartment',
@@ -15,6 +19,57 @@ export const citiesDict: CitiesDict = {
   Amsterdam: 'Amsterdam',
   Hamburg: 'Hamburg',
   Dusseldorf: 'Dusseldorf',
+};
+
+export const citiesLocations: CitiesLocations = {
+  'Paris': {
+    name: citiesDict['Paris'],
+    location: {
+      latitude: 48.85661,
+      longitude: 2.351499,
+      zoom: 13,
+    },
+  },
+  'Cologne': {
+    name: citiesDict['Cologne'],
+    location: {
+      latitude: 50.938361,
+      longitude: 6.959974,
+      zoom: 13,
+    },
+  },
+  'Brussels': {
+    name: citiesDict['Brussels'],
+    location: {
+      latitude: 50.846557,
+      longitude: 4.351697,
+      zoom: 13,
+    },
+  },
+  'Amsterdam': {
+    name: citiesDict['Amsterdam'],
+    location: {
+      latitude: 52.37454,
+      longitude: 4.897976,
+      zoom: 13,
+    },
+  },
+  'Hamburg': {
+    name: citiesDict['Hamburg'],
+    location: {
+      latitude: 53.550341,
+      longitude: 10.000654,
+      zoom: 13,
+    },
+  },
+  'Dusseldorf': {
+    name: citiesDict['Dusseldorf'],
+    location: {
+      latitude: 51.225402,
+      longitude: 6.776314,
+      zoom: 13,
+    },
+  },
 };
 
 export enum AppRoute {
@@ -62,5 +117,5 @@ export enum CardType {
 
 export enum MapType {
   Property = 'property',
-  Cities = 'cities'
+  Cities = 'cities',
 }
