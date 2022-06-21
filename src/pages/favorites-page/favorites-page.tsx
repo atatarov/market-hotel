@@ -1,6 +1,6 @@
 import { IOffer } from '../../interfaces/interfaces';
 import { FavoritesList } from '../../components/favorites/favorites-list/favorites-list';
-import { filter } from './utils/filter';
+import { filter } from '../../utils';
 
 interface IFavoritesPageProps {
   offers: IOffer[];
