@@ -4,7 +4,11 @@ import { BookmarkButton } from '../bookmark-button/bookmark-button';
 import { getPlaceCardStyle } from './common/getPlaceCardStyle';
 import { IPlaceCardProps } from './interfaces/IPlaceCardProps';
 
-export function PlaceCard({ offer, cardType }: IPlaceCardProps): JSX.Element {
+export function PlaceCard({
+  offer,
+  cardType,
+  onSetActiveCard,
+}: IPlaceCardProps): JSX.Element {
   const {
     id,
     cardTypeProps,
@@ -17,8 +21,15 @@ export function PlaceCard({ offer, cardType }: IPlaceCardProps): JSX.Element {
     type,
   } = getPlaceCardStyle(offer, cardType);
 
+  const listeners = onSetActiveCard
+    ? { onMouseEnter: () => onSetActiveCard(offer) }
+    : {};
+
   return (
-    <article className={`${cardTypeProps.cardTypeClass} place-card`}>
+    <article
+      className={`${cardTypeProps.cardTypeClass} place-card`}
+      {...listeners}
+    >
       {premiumElement ? premiumElement : ''}
       <div
         className={`${cardTypeProps.wrapperTypeClass} place-card__image-wrapper`}

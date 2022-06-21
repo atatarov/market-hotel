@@ -26,6 +26,16 @@ export function MapComponent({
 
   useEffect(() => {
     if (map) {
+      map.flyTo(
+        [activeOffer.location.latitude, activeOffer.location.longitude],
+        12,
+        { animate: true, duration: 1.0 },
+      );
+    }
+  }, [map, activeOffer]);
+
+  useEffect(() => {
+    if (map) {
       offers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.latitude,

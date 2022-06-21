@@ -1,5 +1,7 @@
 import { CardType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
+import { activeOffer } from '../../store/action';
+import { useAppDispatch } from '../../store/hooks';
 import { PlaceCard } from '../place-card/place-card';
 
 interface IPlacesBoardProps {
@@ -13,8 +15,19 @@ export function PlacesBoard({
   placeCount,
   city,
 }: IPlacesBoardProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const onSetActiveCard = (offer: IOffer) => {
+    dispatch(activeOffer(offer));
+  };
+
   const placeCards = offers.map((offer) => (
-    <PlaceCard key={offer.id} offer={offer} cardType={CardType.Cities} />
+    <PlaceCard
+      onSetActiveCard={onSetActiveCard}
+      key={offer.id}
+      offer={offer}
+      cardType={CardType.Cities}
+    />
   ));
 
   return (

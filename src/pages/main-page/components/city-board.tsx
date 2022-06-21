@@ -11,6 +11,8 @@ export function CityBoard(): JSX.Element {
     city: state.city as City,
   }));
 
+  const activeOffer = useAppSelector((state) => state.activeOffer);
+
   return (
     <div className="cities__places-container container">
       <PlacesBoard offers={offers} placeCount={placeCount} city={city} />
@@ -19,7 +21,7 @@ export function CityBoard(): JSX.Element {
           type={MapType.Cities}
           city={city}
           offers={offers}
-          activeOffer={offers[0]}
+          activeOffer={activeOffer}
         />
       </div>
     </div>
