@@ -11,7 +11,7 @@ export function MainPage({ placeCount, offers }: IMainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
-      <MainWrapper placeCount={placeCount} offers={offers} />
+      <MainWrapper placeCount={placeCount} offers={offers} city={'Amsterdam'} />
     </div>
   );
 }

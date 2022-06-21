@@ -114,7 +114,7 @@ export function OfferPage({ offers, reviews }: IOfferPageProps): JSX.Element {
             <ReviewList reviews={reviews} />
           </div>
         </div>
-        <MapComponent type={MapType.Property} />
+        <MapComponent type={MapType.Property} city={'Amsterdam'} offers={offers} activeOffer={offers[2]} />
       </section>
       <div className="container">
         <section className="near-places places">

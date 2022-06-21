@@ -1,4 +1,4 @@
-import { IOffer } from '../interfaces/interfaces';
+import { ICity, IOffer } from '../interfaces/interfaces';
 
 export type ApartamentType = 'apartment' | 'room' | 'house' | 'hotel';
 
@@ -19,3 +19,7 @@ export type CitiesDict = {
 }
 
 export type FavoritesOffers = { [key in City]: IOffer[] };
+
+export type CitiesLocations = {
+  [key in City]: ICity;
+}
