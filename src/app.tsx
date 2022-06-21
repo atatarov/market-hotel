@@ -9,18 +9,17 @@ import { AppRoute, AuthorizationStatus } from './const';
 import { IOffer, IReview } from './interfaces/interfaces';
 
 interface IAppScreenProps {
-  placeCount: string;
   offers: IOffer[];
   reviews: IReview[];
 }
 
-function App({ placeCount, offers, reviews }: IAppScreenProps): JSX.Element {
+function App({ offers, reviews }: IAppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage offers={offers} placeCount={placeCount} />}
+          element={<MainPage />}
         />
         <Route
           path={AppRoute.Room}

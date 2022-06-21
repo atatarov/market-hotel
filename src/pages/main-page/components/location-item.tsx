@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { activeCity } from '../../../store/action';
+import { useAppDispatch } from '../../../store/hooks';
 import { City } from '../../../types/types';
 
 interface ILocationItemProps {
@@ -10,6 +12,8 @@ export function LocationItem({
   city,
   isActive,
 }: ILocationItemProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const activeItemClass = isActive ? 'tabs__item--active' : '';
 
   return (
@@ -17,6 +21,10 @@ export function LocationItem({
       <Link
         className={`locations__item-link tabs__item ${activeItemClass}`}
         to="/"
+        onClick={(event)=>{
+          event.preventDefault();
+          dispatch(activeCity(city));
+        }}
       >
         <span>{city}</span>
       </Link>

@@ -1,16 +1,16 @@
 import { LocationItem } from './location-item';
 import { citiesDict } from '../../../const';
 import { createKeyValue } from '../../../utils';
+import { useAppSelector } from '../../../store/hooks';
 import { City } from '../../../types/types';
 
-interface TabsProps {
-  activeCity: City;
-}
+export function Tabs(): JSX.Element {
 
-export function Tabs({activeCity}: TabsProps): JSX.Element {
+  const currentCity = useAppSelector((store) => store.city);
+
   const locations = Object.values(citiesDict).map((city, index) => {
     const keyValue = createKeyValue(city as string, index);
-    const isActive = city as City === activeCity;
+    const isActive = city as City === currentCity;
     return <LocationItem key={keyValue} city={city as City} isActive={isActive} />;
   });
   return (
