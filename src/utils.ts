@@ -1,5 +1,9 @@
 import { IOffer } from './interfaces/interfaces';
 import { City, FavoritesOffers } from './types/types';
+import { Map } from 'leaflet';
+import { debounce } from 'lodash-es';
+
+const FLY_TIMEOUT = 500;
 
 const formatDateFromDateType = (date: Date): string =>
   date.toLocaleDateString('default', { day: 'numeric', month: 'long' });
@@ -36,3 +40,16 @@ export const filter = (offers: IOffer[]): FavoritesOffers =>
       Dusseldorf: [],
     } as FavoritesOffers,
   );
+
+export const flyToWithDebounce = debounce((map: Map | null, offer: IOffer) => {
+  if (map) {
+    map.flyTo(
+      [offer.location.latitude, offer.location.longitude],
+      offer.location.zoom,
+      {
+        animate: true,
+        duration: 1.0,
+      },
+    );
+  }
+}, FLY_TIMEOUT);

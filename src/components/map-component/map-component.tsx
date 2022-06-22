@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { citiesLocations, MapType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
 import { City } from '../../types/types';
+import { flyToWithDebounce } from '../../utils';
 import { currentCustomIcon, defaultCustomIcon } from './const';
 import { useMap } from './hooks/useMap';
 
@@ -23,6 +24,10 @@ export function MapComponent({
   const mapRef = useRef(null);
   const currentCity = citiesLocations[city];
   const map = useMap(mapRef, currentCity);
+
+  useEffect(() => {
+    flyToWithDebounce(map, activeOffer);
+  }, [map, activeOffer]);
 
   useEffect(() => {
     if (map) {
