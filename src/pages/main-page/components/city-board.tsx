@@ -5,10 +5,11 @@ import { useAppSelector } from '../../../store/hooks';
 import { City } from '../../../types/types';
 
 export function CityBoard(): JSX.Element {
-  const { placeCount, offers, city } = useAppSelector((state) => ({
+  const { placeCount, offers, city, activeOffer } = useAppSelector((state) => ({
     placeCount: String(state.cityOffers.length),
     offers: state.cityOffers,
     city: state.city as City,
+    activeOffer: state.activeOffer,
   }));
 
   return (
@@ -19,7 +20,7 @@ export function CityBoard(): JSX.Element {
           type={MapType.Cities}
           city={city}
           offers={offers}
-          activeOffer={offers[0]}
+          activeOffer={activeOffer}
         />
       </div>
     </div>

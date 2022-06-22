@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { citiesLocations, MapType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
 import { City } from '../../types/types';
+import { flyToWithDebounce } from '../../utils';
 import { currentCustomIcon, defaultCustomIcon } from './const';
 import { useMap } from './hooks/useMap';
 
@@ -25,6 +26,10 @@ export function MapComponent({
   const map = useMap(mapRef, currentCity);
 
   useEffect(() => {
+    flyToWithDebounce(map, activeOffer);
+  }, [map, activeOffer]);
+
+  useEffect(() => {
     if (map) {
       offers.forEach((offer) => {
         const marker = new Marker({
@@ -34,7 +39,7 @@ export function MapComponent({
 
         marker
           .setIcon(
-            activeOffer !== null && offer.id === activeOffer.id
+            activeOffer !== undefined && offer.id === activeOffer.id
               ? currentCustomIcon
               : defaultCustomIcon,
           )
