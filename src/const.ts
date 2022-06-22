@@ -1,9 +1,5 @@
-import { IRateFragment } from './interfaces/interfaces';
-import {
-  ApartamentDict,
-  CitiesDict,
-  CitiesLocations
-} from './types/types';
+import { IRateFragment, ISortingOption } from './interfaces/interfaces';
+import { ApartamentDict, CitiesDict, CitiesLocations } from './types/types';
 
 export const apartamentDict: ApartamentDict = {
   apartment: 'Apartment',
@@ -22,7 +18,7 @@ export const citiesDict: CitiesDict = {
 };
 
 export const citiesLocations: CitiesLocations = {
-  'Paris': {
+  Paris: {
     name: citiesDict['Paris'],
     location: {
       latitude: 48.85661,
@@ -30,7 +26,7 @@ export const citiesLocations: CitiesLocations = {
       zoom: 13,
     },
   },
-  'Cologne': {
+  Cologne: {
     name: citiesDict['Cologne'],
     location: {
       latitude: 50.938361,
@@ -38,7 +34,7 @@ export const citiesLocations: CitiesLocations = {
       zoom: 13,
     },
   },
-  'Brussels': {
+  Brussels: {
     name: citiesDict['Brussels'],
     location: {
       latitude: 50.846557,
@@ -46,7 +42,7 @@ export const citiesLocations: CitiesLocations = {
       zoom: 13,
     },
   },
-  'Amsterdam': {
+  Amsterdam: {
     name: citiesDict['Amsterdam'],
     location: {
       latitude: 52.37454,
@@ -54,7 +50,7 @@ export const citiesLocations: CitiesLocations = {
       zoom: 13,
     },
   },
-  'Hamburg': {
+  Hamburg: {
     name: citiesDict['Hamburg'],
     location: {
       latitude: 53.550341,
@@ -62,7 +58,7 @@ export const citiesLocations: CitiesLocations = {
       zoom: 13,
     },
   },
-  'Dusseldorf': {
+  Dusseldorf: {
     name: citiesDict['Dusseldorf'],
     location: {
       latitude: 51.225402,
@@ -119,3 +115,29 @@ export enum MapType {
   Property = 'property',
   Cities = 'cities',
 }
+
+export enum SortType {
+  Popular = 'Popular',
+  PriceToHigh = 'PriceToHigh',
+  PriceToLow = 'PriceToLow',
+  TopRated = 'TopRated',
+}
+
+export const placesSortingItems: ISortingOption[] = [
+  {
+    title: 'Popular',
+    type: SortType.Popular,
+  },
+  {
+    title: 'Price: low to high',
+    type: SortType.PriceToHigh,
+  },
+  {
+    title: 'Price: high to low',
+    type: SortType.PriceToLow,
+  },
+  {
+    title: 'Top rated first',
+    type: SortType.TopRated,
+  },
+];
