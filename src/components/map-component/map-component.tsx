@@ -34,7 +34,7 @@ export function MapComponent({
 
         marker
           .setIcon(
-            activeOffer !== null && offer.id === activeOffer.id
+            activeOffer !== undefined && offer.id === activeOffer.id
               ? currentCustomIcon
               : defaultCustomIcon,
           )
