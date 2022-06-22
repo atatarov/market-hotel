@@ -1,3 +1,5 @@
+import { SortType } from '../const';
+
 export interface IReview {
   avatar: string;
   name: string;
@@ -51,4 +53,9 @@ export interface IRateFragment {
 export interface ISize {
   width: string;
   height: string;
+}
+
+export interface ISortingOption {
+  title: string;
+  type: SortType;
 }

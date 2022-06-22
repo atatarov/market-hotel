@@ -1,16 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { AuthorizationStatus, citiesDict } from '../const';
+import { AuthorizationStatus, citiesDict, SortType } from '../const';
 import { offers } from '../mocks/offers';
-import { filter } from '../utils';
-import { activeCity, activeOffer, authStatus } from './action';
+import { City } from '../types/types';
+import { filter, sort } from '../utils';
+import { activeCity, activeOffer, authStatus, sortOffers } from './action';
 
 const filtereddOffers = filter(offers);
 
 const initialState = {
-  city: citiesDict['Paris'],
+  city: citiesDict['Paris'] as City,
   cityOffers: filtereddOffers['Paris'],
   authStatus: AuthorizationStatus.NoAuth,
   activeOffer: filtereddOffers['Paris'][0],
+  sortType: SortType.Popular,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -24,5 +26,9 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(activeOffer, (state, action) => {
       state.activeOffer = action.payload;
+    })
+    .addCase(sortOffers, (state, action) => {
+      state.sortType = action.payload;
+      state.cityOffers = sort(action.payload, filtereddOffers[state.city]);
     });
 });

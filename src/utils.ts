@@ -2,6 +2,7 @@ import { IOffer } from './interfaces/interfaces';
 import { City, FavoritesOffers } from './types/types';
 import { Map } from 'leaflet';
 import { debounce } from 'lodash-es';
+import { SortType } from './const';
 
 const FLY_TIMEOUT = 500;
 
@@ -42,7 +43,7 @@ export const filter = (offers: IOffer[]): FavoritesOffers =>
   );
 
 export const flyToWithDebounce = debounce((map: Map | null, offer: IOffer) => {
-  if (map) {
+  if (map && offer) {
     map.flyTo(
       [offer.location.latitude, offer.location.longitude],
       offer.location.zoom,
@@ -53,3 +54,16 @@ export const flyToWithDebounce = debounce((map: Map | null, offer: IOffer) => {
     );
   }
 }, FLY_TIMEOUT);
+
+export const sort = (sortType: SortType, offers: IOffer[]): IOffer[] => {
+  switch (sortType) {
+    case SortType.Popular:
+      return offers;
+    case SortType.PriceToHigh:
+      return offers.slice(0, offers.length).sort((a, b) => a.price - b.price);
+    case SortType.PriceToLow:
+      return offers.slice(0, offers.length).sort((a, b) => b.price - a.price);
+    case SortType.TopRated:
+      return offers.slice(0, offers.length).sort((a, b) => b.rate - a.rate);
+  }
+};

@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { AuthorizationStatus } from '../const';
+import { AuthorizationStatus, SortType } from '../const';
 import { IOffer } from '../interfaces/interfaces';
 import { City } from '../types/types';
 
@@ -15,4 +15,9 @@ export const authStatus = createAction(
 export const activeOffer = createAction(
   'main/activeOffer',
   (value: IOffer) => ({ payload: value }),
+);
+
+export const sortOffers = createAction(
+  'main/sortOffers',
+  (value: SortType) => ({ payload: value }),
 );
