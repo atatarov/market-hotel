@@ -21,3 +21,8 @@ export const sortOffers = createAction(
   'main/sortOffers',
   (value: SortType) => ({ payload: value }),
 );
+
+export const loadOffers = createAction(
+  'data/loadOffers',
+  (value: IOffer[]) => ({ payload: value }),
+);
