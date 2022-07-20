@@ -41,3 +41,5 @@ export interface IServerUserData {
   name: string;
   token: string;
 }
+
+export type ErrorType = unknown;

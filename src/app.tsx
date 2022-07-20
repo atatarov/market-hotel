@@ -7,8 +7,6 @@ import { NotFoundPage } from './pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute } from './const';
 import { IOffer, IReview } from './interfaces/interfaces';
-import { useAppDispatch } from './store/hooks';
-import { checkAuthAction } from './store/api-action';
 
 interface IAppScreenProps {
   offers: IOffer[];
@@ -16,9 +14,6 @@ interface IAppScreenProps {
 }
 
 function App({ offers, reviews }: IAppScreenProps): JSX.Element {
-  const dispatch = useAppDispatch();
-  dispatch(checkAuthAction());
-
   return (
     <BrowserRouter>
       <Routes>
