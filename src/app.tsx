@@ -5,8 +5,10 @@ import { FavoritesPage } from './pages/favorites-page/favorites-page';
 import { PrivateRoute } from './components/private-route/private-route';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from './const';
+import { AppRoute } from './const';
 import { IOffer, IReview } from './interfaces/interfaces';
+import { useAppDispatch } from './store/hooks';
+import { checkAuthAction } from './store/api-action';
 
 interface IAppScreenProps {
   offers: IOffer[];
@@ -14,13 +16,13 @@ interface IAppScreenProps {
 }
 
 function App({ offers, reviews }: IAppScreenProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  dispatch(checkAuthAction());
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<MainPage />}
-        />
+        <Route path={AppRoute.Main} element={<MainPage />} />
         <Route
           path={AppRoute.Room}
           element={<OfferPage offers={offers} reviews={reviews} />}
@@ -29,7 +31,7 @@ function App({ offers, reviews }: IAppScreenProps): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute>
               <FavoritesPage offers={offers} />
             </PrivateRoute>
           }

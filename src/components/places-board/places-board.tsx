@@ -1,6 +1,6 @@
 import { CardType } from '../../const';
 import { IOffer } from '../../interfaces/interfaces';
-import { activeOffer } from '../../store/action';
+import { setActiveOffer } from '../../store/action';
 import { useAppDispatch } from '../../store/hooks';
 import { PlaceCard } from '../place-card/place-card';
 import { PlacesSorting } from '../places-sorting/places-sorting';
@@ -19,7 +19,7 @@ export function PlacesBoard({
   const dispatch = useAppDispatch();
 
   const onSetActiveCard = (offer: IOffer): void => {
-    dispatch(activeOffer(offer));
+    dispatch(setActiveOffer(offer));
   };
 
   const placeCards = offers.map((offer) => (

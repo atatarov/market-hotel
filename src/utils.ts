@@ -1,5 +1,10 @@
 import { IOffer } from './interfaces/interfaces';
-import { City, FavoritesOffers } from './types/types';
+import {
+  City,
+  FavoritesOffers,
+  IServerUserData,
+  IUserData
+} from './types/types';
 import { Map } from 'leaflet';
 import { debounce } from 'lodash-es';
 import { SortType } from './const';
@@ -67,3 +72,12 @@ export const sort = (sortType: SortType, offers: IOffer[]): IOffer[] => {
       return offers.slice(0, offers.length).sort((a, b) => b.rate - a.rate);
   }
 };
+
+export const adaptUserDataToClient = (userData: IServerUserData): IUserData => ({
+  email: userData.email,
+  id: userData.id,
+  name: userData.name,
+  token: userData.token,
+  avatarUrl: userData.avatar_url,
+  isPro: userData.is_pro,
+} as IUserData);

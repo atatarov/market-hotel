@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { activeCity } from '../../../store/action';
+import { setActiveCity } from '../../../store/action';
 import { useAppDispatch } from '../../../store/hooks';
 import { City } from '../../../types/types';
 
@@ -23,7 +23,7 @@ export function LocationItem({
         to="/"
         onClick={(event)=>{
           event.preventDefault();
-          dispatch(activeCity(city));
+          dispatch(setActiveCity(city));
         }}
       >
         <span>{city}</span>
