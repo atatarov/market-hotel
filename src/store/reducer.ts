@@ -1,32 +1,35 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, citiesDict, SortType } from '../const';
+import { IOffer, IUserData } from '../interfaces/interfaces';
 import { offers } from '../mocks/offers';
-import { City, IUserData } from '../types/types';
+import { City } from '../types/types';
 import { filter, sort } from '../utils';
 import {
   setActiveCity,
   setActiveOffer,
   setAuthStatus,
+  setOffers,
   setUserData,
   sortOffers
 } from './action';
 
-const filtereddOffers = filter(offers);
+const filteredOffers = filter(offers);
 
 const initialState = {
   city: citiesDict['Paris'] as City,
-  cityOffers: filtereddOffers['Paris'],
+  offers: {} as IOffer[],
   authStatus: AuthorizationStatus.NoAuth,
-  activeOffer: filtereddOffers['Paris'][0],
+  activeOffer: filteredOffers['Paris'][0],
   sortType: SortType.Popular,
   userData: {} as IUserData,
+  cityOffers: [] as IOffer[],
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(setActiveCity, (state, action) => {
       state.city = action.payload;
-      state.cityOffers = filtereddOffers[action.payload];
+      state.cityOffers = filter(state.offers)[action.payload];
     })
     .addCase(setAuthStatus, (state, action) => {
       state.authStatus = action.payload;
@@ -36,9 +39,13 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(sortOffers, (state, action) => {
       state.sortType = action.payload;
-      state.cityOffers = sort(action.payload, filtereddOffers[state.city]);
+      state.cityOffers = sort(action.payload, filter(state.offers)[state.city]);
     })
     .addCase(setUserData, (state, action) => {
       state.userData = action.payload;
+    })
+    .addCase(setOffers, (state, action) => {
+      state.offers = action.payload;
+      state.cityOffers = filter(state.offers)[state.city];
     });
 });

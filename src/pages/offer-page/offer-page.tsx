@@ -1,5 +1,5 @@
 import { CardType, MapType } from '../../const';
-import { IOffer, IReview } from '../../interfaces/interfaces';
+import { IReview } from '../../interfaces/interfaces';
 import { convertRateToPercentage, createKeyValue } from '../../utils';
 import { BookmarkButton } from '../../components/bookmark-button/bookmark-button';
 import { PlaceCard } from '../../components/place-card/place-card';
@@ -7,14 +7,17 @@ import { ReviewList } from '../../components/reviews/review-list/review-list';
 import { MapComponent } from '../../components/map-component/map-component';
 import { useParams } from 'react-router-dom';
 import { NotFoundPage } from '../not-found-page/not-found-page';
+import { useAppSelector } from '../../store/hooks';
 
 interface IOfferPageProps {
-  offers: IOffer[];
   reviews: IReview[];
 }
 
-export function OfferPage({ offers, reviews }: IOfferPageProps): JSX.Element {
+export function OfferPage({ reviews }: IOfferPageProps): JSX.Element {
   const { id } = useParams();
+
+  const offers = useAppSelector((store) => store.offers);
+
   const offer = offers.find((item) => item.id === id);
 
   if (offer === undefined) {

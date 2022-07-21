@@ -1,10 +1,12 @@
-import { IOffer } from './interfaces/interfaces';
 import {
-  City,
-  FavoritesOffers,
+  IHost,
+  IOffer,
+  IServerHost,
+  IServerOffer,
   IServerUserData,
   IUserData
-} from './types/types';
+} from './interfaces/interfaces';
+import { City, FavoritesOffers } from './types/types';
 import { Map } from 'leaflet';
 import { debounce } from 'lodash-es';
 import { SortType } from './const';
@@ -73,11 +75,43 @@ export const sort = (sortType: SortType, offers: IOffer[]): IOffer[] => {
   }
 };
 
-export const adaptUserDataToClient = (userData: IServerUserData): IUserData => ({
-  email: userData.email,
-  id: userData.id,
-  name: userData.name,
-  token: userData.token,
-  avatarUrl: userData.avatar_url,
-  isPro: userData.is_pro,
-} as IUserData);
+export const adaptUserDataToClient = (userData: IServerUserData): IUserData =>
+  ({
+    email: userData.email,
+    id: userData.id,
+    name: userData.name,
+    token: userData.token,
+    avatarUrl: userData.avatar_url,
+    isPro: userData.is_pro,
+  } as IUserData);
+
+export const adaptOffersToClient = (offers: IServerOffer[]): IOffer[] =>
+  offers.map((offer) => adaptOfferToClient(offer));
+
+export const adaptOfferToClient = (offer: IServerOffer): IOffer =>
+  ({
+    bedrooms: offer.bedrooms,
+    city: offer.city,
+    description: offer.description,
+    goods: offer.goods,
+    host: adaptHostToClient(offer.host),
+    id: offer.id,
+    images: offer.images,
+    isFavorite: offer.isFavorite,
+    isPremium: offer.isPremium,
+    location: offer.location,
+    maxAdults: offer.maxAdults,
+    previewImage: offer.previewImage,
+    price: offer.price,
+    rate: offer.rating,
+    title: offer.title,
+    type: offer.type,
+  } as IOffer);
+
+export const adaptHostToClient = (host: IServerHost): IHost =>
+  ({
+    avatarUrl: host.avatarUrl,
+    id: host.id,
+    isPro: host.isPro,
+    name: host.name,
+  } as IHost);
