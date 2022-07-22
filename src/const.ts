@@ -141,3 +141,20 @@ export const placesSortingItems: ISortingOption[] = [
     type: SortType.TopRated,
   },
 ];
+
+export enum APIRoute {
+  Offers = '/hotels',
+  Offer = '/hotels/{hotelId}',
+  Nearby = '/hotels/{hotelId}/nearby',
+  Favorite = '/favorite',
+  FavoriteStatus = '/favorite/{hotelId}/{status}',
+  Comments = '/comments/{hotelId}',
+  Login = '/login',
+  Logout = '/logout',
+}
+
+export enum HttpCode {
+  BadRequest = 400,
+  Unauthorized = 401,
+  NotFound = 404,
+}

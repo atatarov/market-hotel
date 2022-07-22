@@ -26,6 +26,13 @@ export interface IHost {
   name: string;
 }
 
+export interface IServerHost {
+  avatarUrl: string;
+  id: string;
+  isPro: boolean;
+  name: string;
+}
+
 export interface IOffer {
   bedrooms: number;
   city: ICity;
@@ -45,6 +52,25 @@ export interface IOffer {
   type: string;
 }
 
+export interface IServerOffer {
+  bedrooms: number;
+  city: ICity;
+  description: string;
+  goods: string[];
+  host: IServerHost;
+  id: string;
+  images: string[];
+  isFavorite: boolean;
+  isPremium: boolean;
+  location: ILocation;
+  maxAdults: number;
+  previewImage: string;
+  price: number;
+  rating: number;
+  title: string;
+  type: string;
+}
+
 export interface IRateFragment {
   value: string;
   id: string;
@@ -58,4 +84,22 @@ export interface ISize {
 export interface ISortingOption {
   title: string;
   type: SortType;
+}
+
+export interface IUserData {
+  avatarUrl: string;
+  email: string;
+  id: number;
+  isPro: boolean;
+  name: string;
+  token: string;
+}
+
+export interface IServerUserData {
+  avatar_url: string;
+  email: string;
+  id: number;
+  is_pro: boolean;
+  name: string;
+  token: string;
 }

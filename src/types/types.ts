@@ -16,10 +16,12 @@ export type City =
 
 export type CitiesDict = {
   [key in City]: string;
-}
+};
 
 export type FavoritesOffers = { [key in City]: IOffer[] };
 
 export type CitiesLocations = {
   [key in City]: ICity;
-}
+};
+
+export type ErrorType = unknown;

@@ -1,12 +1,9 @@
-import { IOffer } from '../../interfaces/interfaces';
 import { FavoritesList } from '../../components/favorites/favorites-list/favorites-list';
+import { useAppSelector } from '../../store/hooks';
 import { filter } from '../../utils';
 
-interface IFavoritesPageProps {
-  offers: IOffer[];
-}
-
-export function FavoritesPage({ offers }: IFavoritesPageProps): JSX.Element {
+export function FavoritesPage(): JSX.Element {
+  const offers = useAppSelector((store) => store.offers);
   const favoritesOffers = offers.filter((offer) => offer.isFavorite);
 
   const filteredOffers = filter(favoritesOffers);
