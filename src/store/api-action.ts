@@ -3,7 +3,7 @@ import { APIRoute, AuthorizationStatus } from '../const';
 import { IServerOffer } from '../interfaces/interfaces';
 import { handleError } from '../services/handle-error';
 import { adaptOffersToClient, adaptUserDataToClient } from '../utils';
-import { setAuthStatus, setOffers, setUserData } from './action';
+import { setAuthStatus, setLoading, setOffers, setUserData } from './action';
 import { api, store } from './store';
 
 export const checkAuthAction = createAsyncThunk('user/checkAuth', async () => {
@@ -20,11 +20,13 @@ export const checkAuthAction = createAsyncThunk('user/checkAuth', async () => {
 export const fetchOffersAction = createAsyncThunk(
   'data/fetchOffers',
   async () => {
+    store.dispatch(setLoading(true));
     try {
       const { data } = await api.get<IServerOffer[]>(APIRoute.Offers);
       store.dispatch(setOffers(adaptOffersToClient(data)));
     } catch (error) {
       handleError(error);
     }
+    store.dispatch(setLoading(false));
   },
 );

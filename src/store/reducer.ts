@@ -8,6 +8,7 @@ import {
   setActiveCity,
   setActiveOffer,
   setAuthStatus,
+  setLoading,
   setOffers,
   setUserData,
   sortOffers
@@ -23,6 +24,7 @@ const initialState = {
   sortType: SortType.Popular,
   userData: {} as IUserData,
   cityOffers: [] as IOffer[],
+  isLoading: false,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -47,5 +49,8 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(setOffers, (state, action) => {
       state.offers = action.payload;
       state.cityOffers = filter(state.offers)[state.city];
+    })
+    .addCase(setLoading, (state, action) => {
+      state.isLoading = action.payload;
     });
 });
