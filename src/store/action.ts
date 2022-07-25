@@ -29,3 +29,7 @@ export const setUserData = createAction('user/data', (value: IUserData) => ({
 export const setOffers = createAction('data/offers', (value: IOffer[]) => ({
   payload: value,
 }));
+
+export const setLoading = createAction('data/loading', (value: boolean) => ({
+  payload: value,
+}));
