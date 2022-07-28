@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { AuthorizationStatus, SortType } from '../const';
+import { AppRoute, AuthorizationStatus, SortType } from '../const';
 import { IOffer, IUserData } from '../interfaces/interfaces';
 import { City } from '../types/types';
 
@@ -33,3 +33,10 @@ export const setOffers = createAction('data/offers', (value: IOffer[]) => ({
 export const setLoading = createAction('data/loading', (value: boolean) => ({
   payload: value,
 }));
+
+export const redirectToRoute = createAction(
+  'global/redirect',
+  (value: AppRoute) => ({
+    payload: value,
+  }),
+);

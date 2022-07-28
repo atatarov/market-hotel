@@ -5,6 +5,7 @@ import { offers } from '../mocks/offers';
 import { City } from '../types/types';
 import { filter, sort } from '../utils';
 import {
+  redirectToRoute,
   setActiveCity,
   setActiveOffer,
   setAuthStatus,
@@ -52,5 +53,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setLoading, (state, action) => {
       state.isLoading = action.payload;
+    })
+    .addCase(redirectToRoute, (state, action)=>{
+      // browserHistory.push(action.payload);
     });
 });
