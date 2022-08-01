@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../store/hooks';
 
 export function Header(): JSX.Element {
   const authorizationStatus = useAppSelector((store) => store.authStatus);
+  const userData = useAppSelector((store) => store.userData);
 
   return (
     <header className="header">
@@ -33,7 +34,7 @@ export function Header(): JSX.Element {
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   {authorizationStatus === AuthorizationStatus.Auth ? (
                     <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
+                      {userData.email}
                     </span>
                   ) : (
                     <span className="header__login">Sign in</span>
