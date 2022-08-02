@@ -3,8 +3,8 @@ import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
 import { IServerOffer, IServerUserData } from '../interfaces/interfaces';
 import { handleError } from '../services/handle-error';
 import { saveToken } from '../services/token';
-import { adaptOffersToClient, adaptUserDataToClient } from '../utils';
-import { redirectToRoute, setAuthStatus, setLoading, setOffers, setUserData } from './action';
+import { adaptOffersToClient, adaptOfferToClient, adaptUserDataToClient } from '../utils';
+import { redirectToRoute, setAuthStatus, setLoading, setOffers, setSelectedOffer, setUserData } from './action';
 import { api, store } from './store';
 
 interface IAuthData {
@@ -33,6 +33,18 @@ export const fetchOffersAction = createAsyncThunk(
       handleError(error);
     }
     store.dispatch(setLoading(false));
+  },
+);
+
+export const fetchOfferAction = createAsyncThunk(
+  'data/fetchOffer',
+  async (id: string) => {
+    try {
+      const { data } = await api.get<IServerOffer>(`${APIRoute.Offers}/${id}`);
+      store.dispatch(setSelectedOffer(adaptOfferToClient(data)));
+    } catch (error) {
+      handleError(error);
+    }
   },
 );
 

@@ -9,10 +9,10 @@ import { currentCustomIcon, defaultCustomIcon } from './const';
 import { useMap } from './hooks/useMap';
 
 interface IMapComponentProps {
-  type?: MapType;
   city: City;
-  offers: IOffer[];
   activeOffer: IOffer;
+  offers?: IOffer[];
+  type?: MapType;
 }
 
 export function MapComponent({
@@ -30,7 +30,7 @@ export function MapComponent({
   }, [map, activeOffer]);
 
   useEffect(() => {
-    if (map) {
+    if (map && offers) {
       offers.forEach((offer) => {
         const marker = new Marker({
           lat: offer.location.latitude,

@@ -40,3 +40,8 @@ export const redirectToRoute = createAction(
     payload: value,
   }),
 );
+
+export const setSelectedOffer = createAction(
+  'data/offerRoom',
+  (value: IOffer) => ({ payload: value }),
+);
