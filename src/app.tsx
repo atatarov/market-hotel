@@ -16,7 +16,7 @@ interface IAppScreenProps {
 
 function App({ reviews }: IAppScreenProps): JSX.Element {
   return (
-    <HistoryRouter history={browserHistory}>
+    <HistoryRouter history={browserHistory} basename={'market-hotel'}>
       <Routes>
         <Route
           path={AppRoute.Main}
