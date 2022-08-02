@@ -7,7 +7,9 @@ import { ReviewList } from '../../components/reviews/review-list/review-list';
 import { MapComponent } from '../../components/map-component/map-component';
 import { useParams } from 'react-router-dom';
 import { NotFoundPage } from '../not-found-page/not-found-page';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useEffect } from 'react';
+import { fetchOfferAction } from '../../store/api-action';
 
 interface IOfferPageProps {
   reviews: IReview[];
@@ -16,15 +18,21 @@ interface IOfferPageProps {
 export function OfferPage({ reviews }: IOfferPageProps): JSX.Element {
   const { id } = useParams();
 
-  const offers = useAppSelector((store) => store.offers);
+  const dispatch = useAppDispatch();
 
-  const offer = offers.find((item) => item.id === id);
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchOfferAction(id));
+    }
+  }, [id]);
+
+  const offer = useAppSelector((store) => store.selectedOffer);
 
   if (offer === undefined) {
     return <NotFoundPage />;
   }
 
-  const images = offer.images.map((image, index) => {
+  const images = offer.images?.map((image, index) => {
     const keyValue = createKeyValue(image, index);
     return (
       <div key={keyValue} className="property__image-wrapper">
@@ -33,7 +41,7 @@ export function OfferPage({ reviews }: IOfferPageProps): JSX.Element {
     );
   });
 
-  const properties = offer.goods.map((property, index) => {
+  const properties = offer.goods?.map((property, index) => {
     const keyValue = createKeyValue(property, index);
     return (
       <li key={keyValue} className="property__inside-item">
@@ -99,15 +107,15 @@ export function OfferPage({ reviews }: IOfferPageProps): JSX.Element {
                 <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                   <img
                     className="property__avatar user__avatar"
-                    src={offer.host.avatarUrl}
+                    src={offer.host?.avatarUrl}
                     width="74"
                     height="74"
                     alt="Host"
                   />
                 </div>
-                <span className="property__user-name">{offer.host.name}</span>
+                <span className="property__user-name">{offer.host?.name}</span>
                 <span className="property__user-status">
-                  {offer.host.isPro ? 'Pro ' : ''}
+                  {offer.host?.isPro ? 'Pro ' : ''}
                 </span>
               </div>
               <div className="property__description">
@@ -117,7 +125,11 @@ export function OfferPage({ reviews }: IOfferPageProps): JSX.Element {
             <ReviewList reviews={reviews} />
           </div>
         </div>
-        <MapComponent type={MapType.Property} city={'Amsterdam'} offers={offers} activeOffer={offers[2]} />
+        <MapComponent
+          type={MapType.Property}
+          city={'Amsterdam'}
+          activeOffer={offer}
+        />
       </section>
       <div className="container">
         <section className="near-places places">

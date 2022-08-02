@@ -10,6 +10,7 @@ import {
   setAuthStatus,
   setLoading,
   setOffers,
+  setSelectedOffer,
   setUserData,
   sortOffers
 } from './action';
@@ -25,6 +26,7 @@ const initialState = {
   userData: {} as IUserData,
   cityOffers: [] as IOffer[],
   isLoading: false,
+  selectedOffer: {} as IOffer,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -52,5 +54,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setLoading, (state, action) => {
       state.isLoading = action.payload;
+    })
+    .addCase(setSelectedOffer, (state, action) => {
+      state.selectedOffer = action.payload;
     });
 });
